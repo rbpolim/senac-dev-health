@@ -1,6 +1,10 @@
 import { ProfileForm } from "@/components/profile-form";
 
-export default function Profile() {
+import { initialProfile } from "@/lib/initial-profile";
+
+export default async function Profile() {
+  await initialProfile()
+
   return (
     <main className="h-full bg-[#F5FAF7] flex items-center justify-center">
       <div className="p-6 rounded-lg bg-white w-full max-w-md">
