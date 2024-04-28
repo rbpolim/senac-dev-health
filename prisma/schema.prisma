@@ -22,8 +22,8 @@ model IMC {
   dateOfBirth         DateTime
   gender              Gender
   heightInCentimeters Int
-  weightInCentimeters Int
-  imc                 Float?
+  weightInGrams       Int
+  imc                 Int
 
   profileId String  @unique
   profile   Profile @relation(fields: [profileId], references: [id])

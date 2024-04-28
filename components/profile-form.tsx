@@ -7,6 +7,7 @@ import { CalendarIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { z } from "zod"
+import axios from "axios"
 
 import {
   Form,
@@ -57,10 +58,15 @@ export function ProfileForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       console.log(values)
       // TODO: Create a new user profile
+
+      const imc = await axios.post("/api/imc", values)
+
+      console.log(imc)
+
       toast.success("Seus dados foram salvos com sucesso!")
       router.push("/home")
     } catch (err) {
