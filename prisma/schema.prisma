@@ -23,7 +23,7 @@ model IMC {
   gender              Gender
   heightInCentimeters Int
   weightInGrams       Int
-  imc                 Int
+  imc                 Float
 
   profileId String  @unique
   profile   Profile @relation(fields: [profileId], references: [id])
