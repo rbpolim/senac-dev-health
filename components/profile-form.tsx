@@ -60,13 +60,7 @@ export function ProfileForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log(values)
-      // TODO: Create a new user profile
-
-      const imc = await axios.post("/api/imc", values)
-
-      console.log(imc)
-
+      await axios.post("/api/imc", values)
       toast.success("Seus dados foram salvos com sucesso!")
       router.push("/home")
     } catch (err) {
