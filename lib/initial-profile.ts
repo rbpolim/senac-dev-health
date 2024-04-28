@@ -13,16 +13,28 @@ export const initialProfile = async () => {
   const profile = await prisma.profile.findFirst({
     where: {
       userId: user.id,
-    }
+    },
   })
 
   if (!profile) {
-    return await prisma.profile.create({
+    await prisma.profile.create({
       data: {
         userId: user.id,
         email: user.emailAddresses[0].emailAddress,
       }
     })
+
+    return
+  }
+
+  const userHasIMC = await prisma.iMC.findFirst({
+    where: {
+      profileId: profile.id,
+    }
+  })
+
+  if (!userHasIMC) {
+    return
   }
 
   return redirect("/home");
