@@ -4,8 +4,7 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="min-h-screen flex flex-col">
-      <h1>HOME LAYOUT</h1>
+    <main className="min-h-screen w-full">
       {children}
     </main>
   );
