@@ -32,6 +32,20 @@ model IMC {
   updatedAt DateTime @updatedAt
 }
 
+model Recipe {
+  id          String   @id @default(cuid())
+  name        String
+  ingredients String[]
+  steps       String[]
+
+  preparationTime  Int
+  cookingTime      Int
+  nutritionalValue BigInt // in Kcal
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 enum Gender {
   MALE
   FEMALE
