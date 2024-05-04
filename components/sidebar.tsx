@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Linkedin, Twitter } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -14,18 +13,18 @@ export const Sidebar = () => {
   const routes = [
     {
       label: "HOME",
-      path: "/",
-      isActive: pathname === "/"
+      path: "/home",
+      isActive: pathname === "/home"
     },
     {
-      label: "ABOUT",
-      path: "/about",
-      isActive: pathname === "/about"
+      label: "RECEITAS",
+      path: "/receipts",
+      isActive: pathname === "/receipts"
     },
     {
-      label: "PROJECTS",
-      path: "/projects",
-      isActive: pathname === "/projects"
+      label: "MEU IMC",
+      path: "/imc",
+      isActive: pathname === "/imc"
     },
   ]
 
@@ -40,8 +39,8 @@ export const Sidebar = () => {
             key={route.path}
             href={route.path}
             className={cn(
-              'w-full text-[#52665A] p-6 text-3xl transition hover:bg-muted-foreground/20',
-              route.isActive && 'bg-muted-foreground/20'
+              'w-full text-[#52665A] p-6 text-3xl',
+              route.isActive && 'font-bold'
             )}
           >
             {route.label}

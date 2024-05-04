@@ -20,7 +20,7 @@ export function Categories() {
   return (
     <div className="space-y-2">
       <h2>Selecione uma categoria</h2>
-      <div className='flex items-center gap-x-4 overflow-auto pb-4'>
+      <div className='flex items-center gap-x-3 overflow-auto pb-2'>
         {CATEGORIES.map((item) => (
           <ButtonCategory
             key={item}

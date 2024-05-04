@@ -14,7 +14,7 @@ export function ButtonCategory({
 }: Props) {
   return (
     <Button
-      // @ts-ignore
+      size="sm"
       variant={isActive ? 'default' : 'outline'}
       {...rest}
     >
