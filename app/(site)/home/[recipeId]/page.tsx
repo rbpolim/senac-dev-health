@@ -1,11 +1,18 @@
 import Image from 'next/image'
-import { ChevronLeft, Clock, CookingPot, LineChart } from 'lucide-react'
+import {
+  ChevronLeft,
+  Clock,
+  CookingPot,
+  Heart,
+  LineChart
+} from 'lucide-react'
 
 import { prisma } from '@/lib/prisma'
 
 import { Button } from '@/components/ui/button'
 
 import { ToggleInfoRecipe } from './_components/toggle-info-recipe'
+import { ToggleFavoriteRecipe } from './_components/toggle-favorite-recipe'
 
 export default async function RecipeId({
   params
@@ -32,6 +39,7 @@ export default async function RecipeId({
             objectFit='cover'
             className='rounded-lg'
           />
+          <ToggleFavoriteRecipe />
         </div>
         <h1 className='mt-8 text-3xl font-bold'>
           {recipe.name}
