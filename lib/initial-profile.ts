@@ -1,7 +1,7 @@
-import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { currentUser } from "@clerk/nextjs/server";
 
-import prisma from "@/lib/prisma"
+import { prisma } from "@/lib/prisma"
 
 export const initialProfile = async () => {
   const user = await currentUser();
@@ -13,7 +13,7 @@ export const initialProfile = async () => {
   const profile = await prisma.profile.findFirst({
     where: {
       userId: user.id,
-    },
+    }
   })
 
   if (!profile) {

@@ -8,12 +8,13 @@ datasource db {
 }
 
 model Profile {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  userId    String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  IMC       IMC?
+  id                String              @id @default(cuid())
+  email             String              @unique
+  userId            String              @unique
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  IMC               IMC?
+  ProfilesOnRecipes ProfilesOnRecipes[]
 }
 
 model IMC {
@@ -33,20 +34,42 @@ model IMC {
 }
 
 model Recipe {
-  id          String   @id @default(cuid())
-  name        String
-  ingredients String[]
-  steps       String[]
-
+  id               String     @id @default(cuid())
+  name             String
+  ingredients      String[]
+  steps            String[]
   preparationTime  Int
   cookingTime      Int
   nutritionalValue BigInt // in Kcal
+  type             TypeRecipe
+
+  ProfilesOnRecipes ProfilesOnRecipes[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+model ProfilesOnRecipes {
+  profileId String
+  profile   Profile @relation(fields: [profileId], references: [id])
+
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+
+  @@id([profileId, recipeId])
+}
+
 enum Gender {
   MALE
   FEMALE
+}
+
+enum TypeRecipe {
+  SALAD
+  MEAT
+  FISH
+  SOUP
+  PASTA
+  DESSERT
+  VEGETARIAN
 }

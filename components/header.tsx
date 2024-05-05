@@ -7,7 +7,7 @@ export function Header() {
   return (
     <header className='w-full px-4 h-20 flex items-center justify-between'>
       <MobileSidebar />
-      <div className='flex items-center gap-x-4'>
+      <div className='flex items-center gap-x-6'>
         <Logo />
         <UserButton />
       </div>

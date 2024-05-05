@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { auth } from '@clerk/nextjs/server'
 
-import prisma from "@/lib/prisma"
+import { prisma } from "@/lib/prisma"
 
 export async function POST(
   req: Request,
@@ -55,17 +55,15 @@ export async function POST(
     const formatHeight = height.replace(',', '.')
     const formatWeight = weight.replace(',', '.')
 
-    const heightInCentimeters = formatHeight * 100 // Get height in centimeters
-    const weightInGrams = formatWeight * 100 // Get weight in grams
-    const calculateIMC = formatWeight / (formatHeight * formatHeight) // Calculate IMC  
+    const calculateIMC = formatWeight / (formatHeight * formatHeight) // Calculate IMC
 
     const imc = await prisma.iMC.create({
       data: {
         name,
         dateOfBirth,
         gender: gender === "MALE" ? "MALE" : "FEMALE",
-        heightInCentimeters,
-        weightInGrams,
+        heightInCentimeters: formatHeight * 100,
+        weightInGrams: formatWeight * 1000,
         imc: calculateIMC,
         profileId: profile.id,
       }

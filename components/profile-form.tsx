@@ -158,7 +158,7 @@ export function ProfileForm() {
           name="height"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Altura (m)</FormLabel>
+              <FormLabel>Altura (ex.: 1,70)</FormLabel>
               <FormControl>
                 <Input placeholder="Digite aqui" {...field} />
               </FormControl>
@@ -171,7 +171,7 @@ export function ProfileForm() {
           name="weight"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Peso (kg)</FormLabel>
+              <FormLabel>Peso (ex.: 82,5)</FormLabel>
               <FormControl>
                 <Input placeholder="Digite aqui" {...field} />
               </FormControl>
