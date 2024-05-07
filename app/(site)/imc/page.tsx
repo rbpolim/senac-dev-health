@@ -2,18 +2,16 @@ import { redirect } from "next/navigation"
 import { currentUser } from "@clerk/nextjs/server"
 
 import { prisma } from "@/lib/prisma"
+import { availableIMC } from '@/utils/available-imc'
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-
-import { availableIMC } from '@/utils/available-imc'
+import { ModalClient } from "@/components/modal-client"
 
 export default async function IMC() {
   const user = await currentUser()
@@ -37,6 +35,7 @@ export default async function IMC() {
 
   return (
     <>
+      <ModalClient />
       <Card>
         <CardHeader>
           <CardDescription>Seu IMC é:</CardDescription>
@@ -50,9 +49,6 @@ export default async function IMC() {
           </p>
         </CardContent>
       </Card>
-      <Button className="w-full mt-4">
-        Editar suas informações
-      </Button>
     </>
   )
 }
