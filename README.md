@@ -1,7 +1,7 @@
 ![Desktop - 5](https://github.com/rbpolim/senac-dev-health/assets/66570560/a75bc7e9-be8d-42ed-a8da-04fd5ab477c0)
 
 # Projeto Integrador (Parte 2)
-Aplicação web para cadastro de pacientes e cálculo de IMC.
+Aplicação web responsiva (mobile) para cadastro de pacientes e cálculo de IMC.
 
 ## Techs
 
@@ -17,8 +17,9 @@ Aplicação web para cadastro de pacientes e cálculo de IMC.
 
 - Padronização de commits (feat/fix/chore/style/docs);
 - Poder cadastrar um usuário
-- Poder criar um IMC
-- Validação de formulários com React Hook Form e Yup;
+- Poder criar o cálculo de IMC
+- Poder editar o cálculo de IMC
+- Validação de formulários com React Hook Form e Zod;
 
 ## Docs:
 
@@ -27,6 +28,8 @@ Aplicação web para cadastro de pacientes e cálculo de IMC.
 - [Documentação da APIs de autenticação]() 
 
 ## Getting Started
+
+Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis de ambiente conforme o arquivo `.env.example`
 
 Primeiro, clone o repositório:
 
@@ -46,7 +49,12 @@ Execute o Docker para rodar o banco de dados:
 docker-compose up
 ```
 
-Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis de ambiente conforme o arquivo .env.example
+Execute as migrations:
+
+```bash 
+npx prisma generate
+npx prisma db push 
+```
 
 Execute o projeto:
 
