@@ -8,10 +8,11 @@ Aplicação web responsiva (mobile) para cadastro de pacientes e cálculo de IMC
 - TypeScript
 - NextJS
 - TailwindCSS
-- Shadcn/ui
+- Prisma ORM
+- Shadcn/ui 
 - React Hook Form
-- Sooner 
-- Zod
+- Sooner Toast
+- Zod Validation
 
 ## Features
 

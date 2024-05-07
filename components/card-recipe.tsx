@@ -24,12 +24,13 @@ export function CardRecipe({ data }: Props) {
         <CardDescription>{data.nutritionalValue} kcal</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="relative h-20 w-full rounded-full">
+        <div className="relative h-20">
           <Image
             fill
             src='/risoto.png'
             alt="Risoto de camarão"
-            className="object-cover"
+            objectFit='cover'
+            className='rounded-md'
           />
         </div>
       </CardContent>
