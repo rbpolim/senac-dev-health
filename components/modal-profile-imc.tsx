@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner"
+import { toast } from "sonner";
 import { z } from "zod";
+import axios from "axios";
 
 import {
   Form,
@@ -46,13 +47,13 @@ export function ModalProfileIMC({
     },
   })
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // TODO: Atualizar na API
-      console.log(data)
-      toast.success("Dados atualizados com sucesso.")
-      form.reset()
+      await axios.put("/api/imc", values)
+      window.location.reload()
       onClose()
+      form.reset()
+      toast.success("Dados atualizados com sucesso.")
     } catch (err) {
       console.error(err)
       toast.error("Ocorreu um erro ao editar os dados.")
@@ -82,7 +83,11 @@ export function ModalProfileIMC({
               <FormItem>
                 <FormLabel>Altura (ex.: 1,70)</FormLabel>
                 <FormControl>
-                  <Input placeholder="Digite aqui" {...field} />
+                  <Input
+                    disabled={loading}
+                    placeholder="Digite aqui"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -95,7 +100,11 @@ export function ModalProfileIMC({
               <FormItem>
                 <FormLabel>Peso (ex.: 82,5)</FormLabel>
                 <FormControl>
-                  <Input placeholder="Digite aqui" {...field} />
+                  <Input
+                    disabled={loading}
+                    placeholder="Digite aqui"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
