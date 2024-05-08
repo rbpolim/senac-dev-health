@@ -57,6 +57,12 @@ npx prisma generate
 npx prisma db push 
 ```
 
+Execute o seed:
+
+```bash
+npx prisma db seed
+```
+
 Execute o projeto:
 
 ```bash
