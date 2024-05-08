@@ -22,7 +22,7 @@ model IMC {
   id                  String   @id @default(cuid())
   name                String
   dateOfBirth         DateTime
-  gender              Gender
+  gender              GENDER
   heightInCentimeters Int
   weightInGrams       Int
   imc                 Float
@@ -35,30 +35,27 @@ model IMC {
 }
 
 model Recipe {
-  id               String     @id @default(cuid())
-  name             String
-  ingredients      String[]
-  steps            String[]
-  preparationTime  Int
-  cookingTime      Int
-  nutritionalValue BigInt // in Kcal
-  type             TypeRecipe
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                       String   @id @default(cuid())
+  name                     String
+  ingredients              String[]
+  steps                    String[]
+  preparationTimeInMinutes Int
+  cookingTimeInMinutes     Int
+  nutritionalValue         Int // in Kcal
+  avatar                   String
+  category                 CATEGORY
 }
 
-enum Gender {
+enum GENDER {
   MALE
   FEMALE
 }
 
-enum TypeRecipe {
+enum CATEGORY {
   SALADAS
   LEGUMES
   CARNES
   MASSAS
   SOPAS
   SOBREMESAS
-  BEBIDAS
 }

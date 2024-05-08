@@ -3,7 +3,6 @@ import {
   ChevronLeft,
   Clock,
   CookingPot,
-  Heart,
   LineChart
 } from 'lucide-react'
 
@@ -34,7 +33,7 @@ export default async function RecipeId({
         <div className='relative aspect-video'>
           <Image
             fill
-            src='/risoto.png'
+            src={`/${recipe.avatar}`}
             alt="Risoto de camarão"
             objectFit='cover'
             className='rounded-lg'
@@ -50,12 +49,12 @@ export default async function RecipeId({
         <div className='flex flex-col items-center'>
           <Clock className='h-6 w-6' />
           <span className='text-sm'>Preparation</span>
-          <h3>{recipe.preparationTime}</h3>
+          <h3>{recipe.preparationTimeInMinutes}</h3>
         </div>
         <div className='flex flex-col items-center'>
           <CookingPot className='h-6 w-6' />
           <span className='text-sm'>Cooking</span>
-          <h3>{recipe.cookingTime}</h3>
+          <h3>{recipe.cookingTimeInMinutes}</h3>
         </div>
         <div className='flex flex-col items-center'>
           <LineChart className='h-6 w-6' />

@@ -7,7 +7,6 @@ const CATEGORIES = [
   'MASSAS',
   'SOPAS',
   'SOBREMESAS',
-  'BEBIDAS',
 ]
 
 type Props = {

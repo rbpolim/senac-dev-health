@@ -13,7 +13,7 @@ type Props = {
 export function HomeClient({ data }: Props) {
   const [category, setCategory] = useState('SALADAS')
 
-  const filterByCategory = data.filter((item) => item.type === category)
+  const filterByCategory = data.filter((item) => item.category === category)
 
   return (
     <>
