@@ -17,11 +17,6 @@ export const Sidebar = () => {
       isActive: pathname.includes("/home")
     },
     {
-      label: "RECEITAS",
-      path: "/recipes",
-      isActive: pathname === "/recipes"
-    },
-    {
       label: "MEU IMC",
       path: "/imc",
       isActive: pathname === "/imc"

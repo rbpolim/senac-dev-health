@@ -29,13 +29,12 @@ export function CardRecipe({ data }: Props) {
             fill
             src='/risoto.png'
             alt="Risoto de camarão"
-            objectFit='cover'
-            className='rounded-md'
+            className='rounded-md object-cover'
           />
         </div>
       </CardContent>
-      <CardFooter>
-        <Button asChild variant='link'>
+      <CardFooter className="flex items-center justify-center">
+        <Button asChild>
           <Link href={`/home/${data.id}`}>
             Ver receita
           </Link>

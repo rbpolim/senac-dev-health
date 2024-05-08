@@ -1,35 +1,37 @@
-'use client'
-
-import { useState } from "react";
-
 import { ButtonCategory } from "@/components/button-category";
 
 const CATEGORIES = [
-  'Saladas',
-  'Legumes',
-  'Carnes',
-  'Massas',
-  'Sopas',
-  'Sobremesas',
-  'Bebidas',
+  'SALADAS',
+  'LEGUMES',
+  'CARNES',
+  'MASSAS',
+  'SOPAS',
+  'SOBREMESAS',
+  'BEBIDAS',
 ]
 
-export function Categories() {
-  const [category, setCategory] = useState('Saladas')
+type Props = {
+  category: string
+  onSelect: (item: string) => void
+}
 
+export function Categories({
+  category,
+  onSelect
+}: Props) {
   return (
-    <div className="space-y-2">
-      <h2>Selecione uma categoria</h2>
-      <div className='flex items-center gap-x-3 overflow-auto pb-2'>
+    <>
+      <h4>Selecione uma categoria</h4>
+      <div className='py-2 flex items-center gap-x-3 overflow-auto'>
         {CATEGORIES.map((item) => (
           <ButtonCategory
             key={item}
             title={item}
-            onClick={() => setCategory(item)}
+            onClick={() => onSelect(item)}
             isActive={item === category}
           />
         ))}
       </div>
-    </div>
+    </>
   )
 }

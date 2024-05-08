@@ -8,13 +8,14 @@ datasource db {
 }
 
 model Profile {
-  id                String              @id @default(cuid())
-  email             String              @unique
-  userId            String              @unique
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime            @updatedAt
-  IMC               IMC?
-  ProfilesOnRecipes ProfilesOnRecipes[]
+  id     String @id @default(cuid())
+  email  String @unique
+  userId String @unique
+
+  IMC IMC?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model IMC {
@@ -43,20 +44,8 @@ model Recipe {
   nutritionalValue BigInt // in Kcal
   type             TypeRecipe
 
-  ProfilesOnRecipes ProfilesOnRecipes[]
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model ProfilesOnRecipes {
-  profileId String
-  profile   Profile @relation(fields: [profileId], references: [id])
-
-  recipeId String
-  recipe   Recipe @relation(fields: [recipeId], references: [id])
-
-  @@id([profileId, recipeId])
 }
 
 enum Gender {
@@ -65,11 +54,11 @@ enum Gender {
 }
 
 enum TypeRecipe {
-  SALAD
-  MEAT
-  FISH
-  SOUP
-  PASTA
-  DESSERT
-  VEGETARIAN
+  SALADAS
+  LEGUMES
+  CARNES
+  MASSAS
+  SOPAS
+  SOBREMESAS
+  BEBIDAS
 }
