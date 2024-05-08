@@ -13,7 +13,7 @@ type Props = {
 export function HomeClient({ data }: Props) {
   const [category, setCategory] = useState('SALADAS')
 
-  const filterByCategory = data.filter((item) => item.category === category)
+  const filtered = data.filter((item) => item.category === category)
 
   return (
     <>
@@ -22,16 +22,19 @@ export function HomeClient({ data }: Props) {
         onSelect={setCategory}
       />
 
-      {filterByCategory.length === 0 && (
+      {filtered.length === 0 && (
         <h3 className="text-lg text-center mt-8 text-muted-foreground">
           Não há nenhuma receita nessa categoria 😭
         </h3>
       )}
 
       <div className='grid grid-cols-2 gap-4 mt-4'>
-        {filterByCategory.length > 0 && (
-          filterByCategory.map((recipe) => (
-            <CardRecipe key={recipe.id} data={recipe} />
+        {filtered.length > 0 && (
+          filtered.map((recipe) => (
+            <CardRecipe
+              key={recipe.id}
+              data={recipe}
+            />
           ))
         )}
       </div>
