@@ -21,7 +21,7 @@ export function Categories({
   return (
     <>
       <h4>Selecione uma categoria</h4>
-      <div className='py-2 flex items-center gap-x-3 overflow-auto'>
+      <div className='pl-1 py-2 flex items-center gap-x-3 overflow-auto'>
         {CATEGORIES.map((item) => (
           <ButtonCategory
             key={item}

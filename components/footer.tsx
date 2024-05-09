@@ -3,9 +3,9 @@ export function Footer() {
   const currentYear = date.getFullYear()
 
   return (
-    <footer className="h-20 w-full flex items-center justify-center border-t">
+    <footer className="backdrop-blur-sm flex items-center justify-center fixed bottom-0 h-12 border-t w-full bg-white">
       <h2 className="text-muted-foreground">
-        SENAC © {currentYear} Dev Health
+        SENAC © {currentYear} Dev.Health
       </h2>
     </footer>
   )

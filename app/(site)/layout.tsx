@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs/server";
 
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 export default async function HomeLayout({
   children,
@@ -17,9 +18,10 @@ export default async function HomeLayout({
   return (
     <main className="min-h-screen w-full bg-[#F5FAF7]">
       <Header />
-      <div className="px-4 h-20">
+      <div className="px-4 pt-24 pb-40">
         {children}
       </div>
+      <Footer />
     </main>
   );
 }
