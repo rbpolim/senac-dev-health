@@ -13,7 +13,6 @@ export async function POST(
     const {
       name,
       gender,
-      dateOfBirth,
       height,
       weight,
     } = body
@@ -28,10 +27,6 @@ export async function POST(
 
     if (!gender) {
       return new NextResponse('Gender is required', { status: 400 })
-    }
-
-    if (!dateOfBirth) {
-      return new NextResponse('Date of Birth is required', { status: 400 })
     }
 
     if (!height) {
@@ -60,12 +55,11 @@ export async function POST(
     const imc = await prisma.iMC.create({
       data: {
         name,
-        dateOfBirth,
         gender: gender === "MALE" ? "MALE" : "FEMALE",
         heightInCentimeters: formatHeight * 100,
         weightInGrams: formatWeight * 1000,
         imc: calculateIMC,
-        profileId: profile.id,
+        profileId: userId,
       }
     })
 
@@ -114,7 +108,7 @@ export async function PUT(
 
     const imc = await prisma.iMC.update({
       where: {
-        profileId: profile.id,
+        profileId: userId,
       },
       data: {
         heightInCentimeters: formatHeight * 100,

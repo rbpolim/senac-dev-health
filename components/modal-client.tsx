@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { ModalProfileIMC } from "@/components/modal-profile-imc"
+import { ModalProfileIMC } from "@/components/modal-profile-imc-form"
 
 export function ModalClient() {
   const [open, setOpen] = useState(false)

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { IMC } from "@prisma/client";
 import { toast } from "sonner";
 import { z } from "zod";
 import axios from "axios";
@@ -25,31 +26,40 @@ const formSchema = z.object({
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  loading: boolean;
+  initialValues: IMC;
 }
 
-export function ModalProfileIMC({
+export function ModalProfileIMCForm({
   isOpen,
   onClose,
-  loading
+  initialValues
 }: Props) {
+  const [isLoading, setIsLoading] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
+  const formattedInitialValues = {
+    height: String(initialValues.heightInCentimeters / 100),
+    weight: String(initialValues.weightInGrams / 1000),
+  }
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      height: "",
-      weight: "",
+      height: formattedInitialValues.height || "",
+      weight: formattedInitialValues.weight || "",
     },
   })
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      setIsLoading(true)
+
       await axios.put("/api/imc", values)
+
       window.location.reload()
       onClose()
       form.reset()
@@ -57,6 +67,8 @@ export function ModalProfileIMC({
     } catch (err) {
       console.error(err)
       toast.error("Ocorreu um erro ao editar os dados.")
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -84,7 +96,7 @@ export function ModalProfileIMC({
                 <FormLabel>Altura (ex.: 1,70)</FormLabel>
                 <FormControl>
                   <Input
-                    disabled={loading}
+                    disabled={isLoading}
                     placeholder="Digite aqui"
                     {...field}
                   />
@@ -101,7 +113,7 @@ export function ModalProfileIMC({
                 <FormLabel>Peso (ex.: 82,5)</FormLabel>
                 <FormControl>
                   <Input
-                    disabled={loading}
+                    disabled={isLoading}
                     placeholder="Digite aqui"
                     {...field}
                   />
@@ -112,13 +124,13 @@ export function ModalProfileIMC({
           />
           <div className="flex items-center justify-end space-x-2">
             <Button
-              disabled={loading}
+              disabled={isLoading}
               variant="outline"
               onClick={onClose}
             >
               Cancel
             </Button>
-            <Button disabled={loading} type="submit">
+            <Button disabled={isLoading} type="submit">
               Atualizar
             </Button>
           </div>

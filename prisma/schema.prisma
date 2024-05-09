@@ -12,23 +12,22 @@ model Profile {
   email  String @unique
   userId String @unique
 
-  IMC IMC?
+  imc IMC?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model IMC {
-  id                  String   @id @default(cuid())
+  id                  String @id @default(cuid())
   name                String
-  dateOfBirth         DateTime
   gender              GENDER
   heightInCentimeters Int
   weightInGrams       Int
   imc                 Float
 
   profileId String  @unique
-  profile   Profile @relation(fields: [profileId], references: [id])
+  profile   Profile @relation(fields: [profileId], references: [userId])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
