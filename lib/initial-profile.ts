@@ -23,19 +23,17 @@ export const initialProfile = async () => {
         email: user.emailAddresses[0].emailAddress,
       }
     })
-
-    return
   }
 
-  const userHasIMC = await prisma.iMC.findFirst({
+  const userAlreadyHasProfileIMC = await prisma.iMC.findFirst({
     where: {
-      profileId: profile.id,
+      profileId: user.id,
     }
   })
 
-  if (!userHasIMC) {
-    return
+  if (!!userAlreadyHasProfileIMC) {
+    return redirect("/home");
   }
 
-  return redirect("/home");
+  return
 }

@@ -42,7 +42,7 @@ export function ModalProfileIMCForm({
   }, [])
 
   const formattedInitialValues = {
-    height: String(initialValues.heightInCentimeters / 100),
+    height: String(initialValues.heightInCentimeters / 100).replace(".", ","),
     weight: String(initialValues.weightInGrams / 1000),
   }
 
@@ -85,8 +85,8 @@ export function ModalProfileIMCForm({
     >
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8"
+          onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormField
             control={form.control}

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs/server";
 
-export default async function MarketingLayout({
+export default async function OnBoardingLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -13,7 +13,7 @@ export default async function MarketingLayout({
   // }
 
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="h-full">
       {children}
     </main>
   );

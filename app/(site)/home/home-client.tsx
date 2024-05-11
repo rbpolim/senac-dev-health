@@ -17,6 +17,10 @@ export function HomeClient({ data }: Props) {
 
   return (
     <>
+      <h2 className="text-3xl font-bold mb-4 text-emerald-900">
+        Receitas
+      </h2>
+
       <Categories
         category={category}
         onSelect={setCategory}

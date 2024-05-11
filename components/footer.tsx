@@ -1,19 +1,16 @@
-import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
-  const date = new Date();
-  const currentYear = date.getFullYear()
-
   return (
-    <footer className="backdrop-blur-sm flex flex-col gap-1 items-center fixed bottom-0 p-4 border-t w-full bg-white">
-      <h2 className="text-sm ">
-        <Link href="/about" className="underline text-emerald-900">
-          SENAC
-        </Link>
-        {' '} © {currentYear} Dev.Health
-      </h2>
-      <p className="text-xs text-muted-foreground">
-        Projeto Integrador: Parte 2
+    <footer className="flex flex-col gap-2 items-center fixed bottom-0 p-3 border-t w-full bg-white">
+      <Image
+        src="/logo-senac.png"
+        alt="Logo SENAC"
+        width={60}
+        height={60}
+      />
+      <p className="text-sm text-muted-foreground">
+        Projeto Integrador Parte 2
       </p>
     </footer>
   )

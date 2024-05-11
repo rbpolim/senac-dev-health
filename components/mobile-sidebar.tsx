@@ -11,7 +11,7 @@ export const MobileSidebar = () => {
   return (
     <Sheet>
       <SheetTrigger className="transition md:hidden hover:opacity-75">
-        <AlignLeft className="w-8 h-8" />
+        <AlignLeft className="w-8 h-8 text-emerald-800" />
       </SheetTrigger>
       <SheetContent side="left" className="p-0 w-full">
         <Sidebar />
