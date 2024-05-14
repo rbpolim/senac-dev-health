@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Recipe } from '@prisma/client'
+import { ExternalLink } from "lucide-react"
 
 import {
   Card,
@@ -36,9 +37,10 @@ export function CardRecipe({ data }: Props) {
         </div>
       </CardContent>
       <CardFooter className="flex items-center justify-center">
-        <Button asChild variant="link">
+        <Button asChild variant="link" className="group">
           <Link href={`/home/${data.id}`}>
             Ver receita
+            <ExternalLink className="h-5 w-5 ml-2 group-hover:-translate-y-1" />
           </Link>
         </Button>
       </CardFooter>

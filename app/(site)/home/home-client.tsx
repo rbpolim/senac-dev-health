@@ -32,7 +32,7 @@ export function HomeClient({ data }: Props) {
         </h3>
       )}
 
-      <div className='grid grid-cols-2 gap-4 mt-4'>
+      <div className='grid grid-cols-2 md:grid-cols-6 gap-4 mt-4'>
         {filtered.length > 0 && (
           filtered.map((recipe) => (
             <CardRecipe

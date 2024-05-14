@@ -2,7 +2,7 @@
 
 # Projeto Integrador (Parte 2)
 Aplicação web responsiva (mobile) para cadastro de pacientes e cálculo de IMC.
-
+Ï
 ## Techs
 
 - TypeScript
@@ -30,8 +30,6 @@ Aplicação web responsiva (mobile) para cadastro de pacientes e cálculo de IMC
 
 ## Getting Started
 
-Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis de ambiente conforme o arquivo `.env.example`
-
 Primeiro, clone o repositório:
 
 ```bash
@@ -43,6 +41,8 @@ Instale as dependências:
 ```bash
 npm install
 ```
+
+Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis de ambiente conforme o arquivo `.env.example`
 
 Execute o Docker para rodar o banco de dados:
 
